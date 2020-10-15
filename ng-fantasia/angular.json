@@ -95,7 +95,12 @@
             "karmaConfig": "projects/fantasia-sys/karma.conf.js",
             "assets": [
               "projects/fantasia-sys/src/favicon.ico",
-              "projects/fantasia-sys/src/assets"
+              "projects/fantasia-sys/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
               "projects/fantasia-sys/src/styles.less"
@@ -129,7 +134,139 @@
           }
         }
       }
+    },
+    "fantasia-web": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "less"
+        }
+      },
+      "root": "projects/fantasia-web",
+      "sourceRoot": "projects/fantasia-web/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/fantasia-web",
+            "index": "projects/fantasia-web/src/index.html",
+            "main": "projects/fantasia-web/src/main.ts",
+            "polyfills": "projects/fantasia-web/src/polyfills.ts",
+            "tsConfig": "projects/fantasia-web/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/fantasia-web/src/favicon.ico",
+              "projects/fantasia-web/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
+            ],
+            "styles": [
+              "projects/fantasia-web/src/styles.less"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/fantasia-web/src/environments/environment.ts",
+                  "with": "projects/fantasia-web/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "fantasia-web:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "fantasia-web:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "fantasia-web:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/fantasia-web/src/test.ts",
+            "polyfills": "projects/fantasia-web/src/polyfills.ts",
+            "tsConfig": "projects/fantasia-web/tsconfig.spec.json",
+            "karmaConfig": "projects/fantasia-web/karma.conf.js",
+            "assets": [
+              "projects/fantasia-web/src/favicon.ico",
+              "projects/fantasia-web/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
+            ],
+            "styles": [
+              "projects/fantasia-web/src/styles.less"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/fantasia-web/tsconfig.app.json",
+              "projects/fantasia-web/tsconfig.spec.json",
+              "projects/fantasia-web/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/fantasia-web/e2e/protractor.conf.js",
+            "devServerTarget": "fantasia-web:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "fantasia-web:serve:production"
+            }
+          }
+        }
+      }
     }
   },
-  "defaultProject": "fantasia-sys"
+  "defaultProject": "fantasia-web"
 }
