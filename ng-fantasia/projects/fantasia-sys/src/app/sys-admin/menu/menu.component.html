@@ -1,0 +1,28 @@
+<ul style="border: none;"  
+    nz-menu 
+    nzMode="inline" 
+    [nzTheme]="'light'"
+    [ngStyle]="{'width': isCollapsed ? 'auto' : '280px'}"  
+    [nzInlineCollapsed]="isCollapsed" >
+
+    <!-- ng-container 不会在页面生成元素 从而利用这个元素递归生成无限极菜单 -->
+    <ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menuTree }"></ng-container>
+    <ng-template #menuTpl let-menuTree>
+        <ng-container *ngFor="let item of menuTree">
+            <!-- 因为官方组件原因 递归生成的子菜单项不能直接用icon 与 title 所以需要单独定义 -->
+            <li *ngIf="item.children.length <= 0" nz-menu-item nzMatchRouter (click)="itemMenuClick(item)"
+                [nzPaddingLeft]="item.lev * 24">
+                <i nz-icon [nzType]="item.icon.type"></i>
+                <span>{{item.title }}</span>
+                <a [routerLink]="'/' + item.routerLink"></a>
+            </li>
+            <li *ngIf="item.children.length > 0" nz-submenu [nzOpen]="item.open" [nzPaddingLeft]="item.lev * 24"
+                [ngStyle]="{'color': item.color}" [nzTitle]="item.title" [nzIcon]="item.icon.type">
+                <ul>
+                    <ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: item.children }"></ng-container>
+                </ul>
+            </li>
+        </ng-container>
+    </ng-template>
+
+</ul>

@@ -1,0 +1,10 @@
+<div class="fantasia-sider flex-column mx-start sx-stretch">
+    <div *ngIf="isCollapsed" class="fantasia-sider-tooltip" nzTooltipTitle="Admin" nzTooltipPlacement="right"  nz-tooltip></div>
+    <div class="flex-column mx-center sx-stretch" [ngStyle]="{'flex': isCollapsed ? '0 0 60px' : '0 0 100px' }">
+        <div class="flex-txt-center" style="flex:0 0 auto;margin-top: 20px;">
+            <img [ngStyle]="{'width': isCollapsed ? '30px' : '60px','height':isCollapsed ? '30px' : '60px','border-radius':'50%'}" src="/assets/header/user-h-img.jpg" alt="头像">
+        </div>
+        <div *ngIf="!isCollapsed" class="flex-txt-center fantasia-sider-text">下午好，Admin</div>
+    </div>
+    <sys-menu [menuTree]="menuTree"></sys-menu>
+</div>

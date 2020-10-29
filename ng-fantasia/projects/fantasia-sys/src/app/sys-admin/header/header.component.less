@@ -1,5 +1,6 @@
+// 导航栏基础样式
 .fan-header {
-    flex            : 0 0 65px;
+    flex            : 0 0 60px;
     color           : #fff;
     font-size       : 18px;
     box-shadow      : 0 1px 10px rgba(0, 0, 0, .2);
@@ -7,6 +8,7 @@
     z-index         : 15;
 }
 
+// 导航栏图标样式
 .fan-header-icon {
     display        : flex;
     flex-flow      : row wrap;
@@ -19,14 +21,31 @@
     transition     : all .2s ease-in-out;
 }
 
+// 导航栏图标悬浮样式
 .fan-header-icon:hover {
     background-color: #ffffff33;
 }
 
+// 导航栏用户样式
 .fan-header-u {
     max-width    : 60px;
     overflow     : hidden;
     text-overflow: ellipsis;
     overflow     : hidden;
     white-space  : nowrap;
+}
+
+// 导航栏用户头像样式
+.fan-header-u-img {
+    width        : 30px;
+    height       : 30px;
+    border-radius: 15px;
+    margin       : 0px 10px;
+}
+
+// 导航栏logo样式
+.fan-header-logo {
+    flex     : 0 1 280px;
+    height   : 40px;
+    min-width: 80px;
 }
