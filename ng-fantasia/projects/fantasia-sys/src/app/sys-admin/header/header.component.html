@@ -1,33 +1,41 @@
 <sys-lock></sys-lock>
-<div class="flex-row mx-start sx-center fan-header">
-    <!-- logo -->
-    <a *ngIf="bodyW >= 280" style="flex:0 1 280px;height:40px;border:1px solid red;min-width: 80px;">1</a>
+<div class="flex-column mx-start sx-stretch" >
+    <div class="flex-row mx-start sx-center fan-header">
+        <!-- logo TODO-->
+        <a *ngIf="bodyW >= 280" class="fan-header-logo"></a>
 
-    <!-- icon TODO:动态调整待优化，是否采用循环方式进行渲染icon -->
-    <!-- <ng-container *ngFor="let item of icons">
-        <a  class="fan-header-icon" [ngStyle]="{'flex': item.code == 'SEARCH' ? '1 1 auto' : ''}" (click)="doHeaderIcon(item.code)">
-            <i nz-icon [nzType]="item.type" [nzTheme]="item.item"></i>
-        </a>
-    </ng-container> -->
+        <!-- menu -->
+        <a class="fan-header-icon" (click)="doMenu()"><i nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+                nzTheme="outline"></i></a>
 
-    <a class="fan-header-icon" (click)="doMenu()"><i nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'" nzTheme="outline"></i></a>
-    <a class="fan-header-icon" (click)="doZoom()"><i nz-icon [nzType]="isFullscreen ? 'fullscreen-exit' : 'fullscreen'" nzTheme="outline"></i></a>
-    <a class="fan-header-icon" (click)="doLock()"><i nz-icon [nzType]="isLock ? 'lock' : 'unlock'" nzTheme="outline"></i></a>
-    <a style="flex:1 1 auto;"><i nz-icon nzType="" nzTheme="outline"></i></a>
-    <a class="fan-header-icon" (click)="doHeaderIcon()"><i nz-icon nzType="bell" nzTheme="outline"></i></a>
-    <a *ngIf="bodyW >= 767" class="fan-header-icon" (click)="doHeaderIcon()"><i nz-icon nzType="tag" nzTheme="outline"></i></a>
-    <a *ngIf="bodyW >= 767" class="fan-header-icon" (click)="doHeaderIcon()"><i nz-icon nzType="transaction" nzTheme="outline"></i></a>
-    <a *ngIf="bodyW >= 767" class="fan-header-icon" href="//github.com/CloudViewer/Blog-QuickLearn"><i nz-icon nzType="github" nzTheme="outline"></i></a>
+        <!-- fullscreen -->
+        <a class="fan-header-icon" (click)="doZoom()"><i nz-icon
+                [nzType]="isFullscreen ? 'fullscreen-exit' : 'fullscreen'" nzTheme="outline"></i></a>
 
+        <!-- lock -->
+        <a class="fan-header-icon" (click)="doLock()"><i nz-icon [nzType]="isLock ? 'lock' : 'unlock'"
+                nzTheme="outline"></i></a>
+        <a style="flex:1 1 auto;"><i nz-icon nzType="" nzTheme="outline"></i></a>
 
+        <!-- bell -->
+        <a class="fan-header-icon" (click)="doHeaderIcon()"><i nz-icon nzType="bell" nzTheme="outline"></i></a>
 
-    <!-- user -->
-    <div *ngIf="bodyW >= 767" class="fan-header-icon" style="flex:0 0 120px;margin-right: 10px;">
-        <img style="width:30px;height:30px;border-radius: 15px;margin:0px 10px;" src="assets/header/user-h-img.jpg" alt="头像"/>
-        <div class="fan-header-u">Admin</div>
+        <!-- tag -->
+        <a *ngIf="bodyW >= 767" class="fan-header-icon" (click)="doHeaderIcon()"><i nz-icon nzType="tag"
+                nzTheme="outline"></i></a>
+
+        <!-- transaction -->
+        <a *ngIf="bodyW >= 767" class="fan-header-icon" (click)="doHeaderIcon()"><i nz-icon nzType="transaction"
+                nzTheme="outline"></i></a>
+
+        <!-- github -->
+        <a *ngIf="bodyW >= 767" class="fan-header-icon" href="//github.com/CloudViewer/Blog-QuickLearn"><i nz-icon
+                nzType="github" nzTheme="outline"></i></a>
+
+        <!-- user -->
+        <div *ngIf="bodyW >= 767" class="fan-header-icon" style="flex:0 0 120px;margin-right: 10px;">
+            <img class="fan-header-u-img" src="assets/header/user-h-img.jpg" alt="头像" />
+            <div class="fan-header-u">Admin</div>
+        </div>
     </div>
-
 </div>
-
-
-

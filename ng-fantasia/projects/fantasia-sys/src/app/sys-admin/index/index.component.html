@@ -1,10 +1,8 @@
-<div class="flex-column mx-start sx-stretch" style="height: 100%;">
-    <sys-header class="flex-column mx-start sx-stretch"></sys-header>
-    <div style="flex:1 0 auto;border:1px solid red;" nz-row>
-
-        <!-- <div nz-col nzSpan="6">col-6</div>
-        <div nz-col nzSpan="6">col-6</div>
-        <div nz-col nzSpan="6">col-6</div>
-        <div nz-col nzSpan="6">col-6</div> -->
+<div class="flex-column mx-start sx-stretch fantasia-flex">
+    <!-- TODO:需引入数据到子组件 由子组件实现具体细节 -->
+    <sys-header></sys-header>
+    <div class="flex-row mx-start sx-stretch" style="flex:1 0 auto;">
+        <sys-sider [menuTree]="menuTree"></sys-sider>
+        <sys-content class="fantasia-content"></sys-content>
     </div>
 </div>

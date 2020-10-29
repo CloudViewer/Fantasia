@@ -9,12 +9,16 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzInputModule } from 'ng-zorro-antd/input';
-import { NzToolTipModule} from 'ng-zorro-antd/tooltip';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { FormsModule } from '@angular/forms';
+import { MenuComponent } from './menu/menu.component';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { ContentComponent } from './content/content.component';
+import { SiderComponent } from './sider/sider.component';
 
 
 @NgModule({
-  declarations: [IndexComponent, HeaderComponent, LockComponent],
+  declarations: [IndexComponent, HeaderComponent, LockComponent, MenuComponent, ContentComponent, SiderComponent],
   imports: [
     CommonModule,
     SysAdminRoutingModule,
@@ -23,7 +27,8 @@ import { FormsModule } from '@angular/forms';
     NzGridModule,
     NzInputModule,
     FormsModule,
-    NzToolTipModule
+    NzToolTipModule,
+    NzMenuModule
   ]
 })
 export class SysAdminModule { }
